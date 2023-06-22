@@ -1,9 +1,9 @@
-from BasePolicyGradient import _PolicyGradient
-from BasePolicyGradient import *
+from PolicyGradient.Base.BasePolicyGradient import BasePolicyGradient
+from PolicyGradient.Base.BasePolicyGradient import *
 import multiprocessing
 import copy
 
-class PolicyGradientParalel(_PolicyGradient):
+class PolicyGradientParalel(BasePolicyGradient):
     def __init__(self,n_cpus,*args,**kwargs) -> None:
         """
         """

@@ -1,10 +1,10 @@
-from BasePolicyGradient import _PolicyGradient
-from BasePolicyGradient import *
+import PolicyGradient.Base.BasePolicyGradient as BPG #_PolicyGradient
 import copy 
 import keras
 from typing import Tuple,List
+import numpy as np
 
-class PolicyGradient(_PolicyGradient):
+class PolicyGradient(BPG.BasePolicyGradient):
     def __init__(self,*args,**kwargs) -> None:
         super().__init__(*args,**kwargs)
 
@@ -62,5 +62,5 @@ class PolicyGradient(_PolicyGradient):
         return scores,rewards,grads
 
 if __name__=="__main__":
-    PolicyGradient(1,2,3,4,5)
+    PolicyGradient(1,3,4,5)
     print('Tested')
