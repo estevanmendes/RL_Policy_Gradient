@@ -3,7 +3,7 @@ from tensorflow import reduce_mean,keras
 
 def average_grads_from_steps(nn,grads):
     averaged_grads=[]
-    for variable_index in range(len(nn.model.trainable_variables)):
+    for variable_index in range(len(nn.trainable_variables)):
         grad_steps_from_variable=[]
         for grad in grads:
             grad_steps_from_variable.append(grad[variable_index])
@@ -17,7 +17,7 @@ def average_grads_from_steps(nn,grads):
 
 def average_grads_from_episodes(nn,grads):
     averaged_grads=[]
-    for variable_index in range(len(nn.model.trainable_variables)):
+    for variable_index in range(len(nn.trainable_variables)):
         grad_steps_from_variable=[]
         for grad_episode in grads:
             for grad_step in grad_episode:
@@ -30,4 +30,4 @@ def average_grads_from_episodes(nn,grads):
 
 def apply_police_gradient(optimizer:keras.optimizers,grad,nn):
 
-        optimizer.apply_gradients(zip(grad,nn.model.trainable_variables))
+        optimizer.apply_gradients(zip(grad,nn.trainable_variables))
