@@ -1,4 +1,5 @@
 import PolicyGradient.Base.BasePolicyGradient as BPG #_PolicyGradient
+import PolicyGradient.Utils.UtilsMetrics as UtilsMetrics
 import copy 
 import keras
 from typing import Tuple,List
@@ -7,7 +8,8 @@ import numpy as np
 class PolicyGradient(BPG.BasePolicyGradient):
     def __init__(self,*args,**kwargs) -> None:
         super().__init__(*args,**kwargs)
-
+        
+    @UtilsMetrics.check_convergence
     def run_multiple_episodes(self,number_of_episodes,method='roulette_prob')->Tuple[List,List,List]:
         """
         """

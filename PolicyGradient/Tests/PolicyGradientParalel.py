@@ -23,5 +23,6 @@ def lunar_landing_test():
     learning_rate=0.02
     optimizer=keras.optimizers.Adam(learning_rate)
     RL=PolicyGradient(n_cpus=2,env=env,nn=nn,loss_fn=loss,gradient_update_period=3,min_score_aceptable=-300,state_size=8,metrics_display_period=3)
-    scores,_,_=RL.training_protocol(6,optimizer=optimizer,factor=0.98)
+    scores,_,_=RL.training_protocol(7,optimizer=optimizer,factor=0.98)
     RL.display_score(scores,2)
+    RL.save_trainning(factor,lr=learning_rate)

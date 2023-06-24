@@ -2,7 +2,7 @@ import os
 import numpy as np
 from functools import wraps
 import matplotlib.pyplot as plt
-
+from PolicyGradient.Utils import UtilsSaving
 
 def moving_average(x, w):
     return np.convolve(x, np.ones(w), 'valid') / w
@@ -24,12 +24,12 @@ def metrics_decorator(report_period=20):
 
 
 def metrics_method_decorator(f):
-        def error(self,*args,**kwargs):
+        def wrapper(self,*args,**kwargs):
             if self._counter%self.metrics_display_period==0:
                 print(f'{self._counter} episodes')
             self._counter+=1
             return f(self,*args,**kwargs)
-        return error
+        return wrapper
 
 def display_score(scores,window):    
     plt.plot(np.arange(len(scores)-window+1),moving_average(scores,window))
@@ -37,3 +37,16 @@ def display_score(scores,window):
     plt.xlabel('Episodes')
     plt.grid(True)
     plt.show()
+
+def check_convergence(f):
+        def wrapper(self,*args,**kwargs):
+            scores,rewards,grads=f(self,*args,**kwargs)
+            median=np.median(scores[-self.threshold_window:])    
+            if median>=self.threshold:
+                self.nn.save('models/model_100%_of_threshold_score_{self.threshold}')
+
+            elif median>=0.5*self.threshold:
+                 self.nn.save('models/model_50%_of_threshold_score_{self.threshold}')
+                 
+                    
+        return wrapper
