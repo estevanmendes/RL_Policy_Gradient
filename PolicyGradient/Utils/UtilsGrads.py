@@ -15,7 +15,7 @@ def average_grads_from_steps(nn,grads):
 
 
 
-def average_grads_from_episodes(nn,grads):
+def average_grads_from_episodes(nn,grads)-> list:
     averaged_grads=[]
     for variable_index in range(len(nn.trainable_variables)):
         grad_steps_from_variable=[]
@@ -28,6 +28,15 @@ def average_grads_from_episodes(nn,grads):
          
     return averaged_grads
 
-def apply_police_gradient(optimizer:keras.optimizers,grad,nn):
-
-        optimizer.apply_gradients(zip(grad,nn.trainable_variables))
+def apply_police_gradient(optimizer:keras.optimizers,grad,nn)-> None:
+    """
+        It applies the gradients in the neural network. 
+        
+        Parameters
+        ----------
+        optimizer: keras.optimizers
+            optimizer for apply the gradients.
+        nn: tensorflow.Model
+            Callable tensorflow neural network
+    """
+    optimizer.apply_gradients(zip(grad,nn.trainable_variables))

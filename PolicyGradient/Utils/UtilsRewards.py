@@ -3,6 +3,16 @@ from itertools import chain
 
 
 def discount_reward_episode(rewards,factor):
+    """
+        It applies the discount in future rewards to account it into the previus actions. 
+    
+    Parameters
+    ----------
+    rewards: list,array
+        the serie of rewards of each epsidode
+    factor: float
+        the factor that multiply the reward of each step
+    """
     
     def matrix_of_discount(number_of_vectors):
         """creates a matrix of the shape

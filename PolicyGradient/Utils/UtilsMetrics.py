@@ -31,7 +31,17 @@ def metrics_method_decorator(f):
             return f(self,*args,**kwargs)
         return wrapper
 
-def display_score(scores,window):    
+def display_score(scores,window):
+    """
+    It plots a graph of the score, i.e. the sum of rewards, curve by the episodes. It is applied a moving average to smooth the curve.
+
+    Parameters
+    ----------
+    scores:list,array
+        The list of float or ints containing the historical serie of scores
+    window: int
+        the window to apply a moving average. 
+    """
     plt.plot(np.arange(len(scores)-window+1),moving_average(scores,window))
     plt.ylabel('Score')
     plt.xlabel('Episodes')
