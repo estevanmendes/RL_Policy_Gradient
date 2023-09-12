@@ -32,8 +32,8 @@ Workflow:\
 
 ## Package Structure. 
 
-Most of the functions inside the Utils package were used as a static method inside the BasePolicyGradient Class (which is encompassed on BasePolicyGradine.py file)
-The Test package contains very simples test to check if the class are working well. 
+Most of the functions inside the Utils package were used as a static method inside the BasePolicyGradient Class (which is encompassed on the BasePolicyGradine.py file)
+The Test package contains a very simple test to check if the class is working well. 
 
 ```
 PolicyGradient/
