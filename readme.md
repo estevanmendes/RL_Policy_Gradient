@@ -1,20 +1,20 @@
 ## Reinforcement Learning Package
 
-This package provides an easy way of apllying policy gradient into an enviroment. 
+This package provides an easy way of applying policy gradient into an environment. 
 It was designed to work with neural networks from TensorFlow, but one may feel invited to extend to Pytorch models as well. 
-There is a class in which the algorithm is paralelized into as many cpus as one may want. 
+There is a class in which the algorithm is parallelized into as many cpus as one may want it. 
 
-We used a reward discout policy using a bit of linear algebra. THe factor depends on the problem and its score dependency on the previus actions. 
+We used a reward discount policy using a bit of linear algebra. THe factor depends on the problem and its score dependency on the previous actions. 
 
 Workflow:
-    let the agent explore the enviroment with the neural network
+    Let the agent explore the environment with the neural network
     every N episodes:
-        apply the reward discout policy in each episode
-        normalize the rewards of the episodes accounting all of them in the normalization
-        create a weighted average of the gradient using the normalized rewards
+        Apply the reward discount policy in each episode
+        Normalize the rewards of the episodes accounting for all of them in the normalization
+        Create a weighted average of the gradient using the normalized rewards
         apply the gradient in the NN using the chosen optimizer
         
-    repeat util the number of episodes aimed is reached. 
+    Repeat util the number of episodes aimed is reached. 
 
     
 
@@ -33,10 +33,10 @@ Workflow:
 
 ## Package Structure. 
 
-Most of the functions inside the Utils package were used as a static mehod inside the BasePolicyGradient Class (which is encopassed on BasePolicyGradine.py file)
+Most of the functions inside the Utils package were used as a static method inside the BasePolicyGradient Class (which is encompassed on BasePolicyGradine.py file)
 The Test package contains very simples test to check if the class are working well. 
 
-
+```
 PolicyGradient/
 |---- Base/
 |        |
@@ -58,3 +58,5 @@ PolicyGradient/
 |
 |---PolicyGradient.py
 |---PolicyGradientParalel.py
+
+```
