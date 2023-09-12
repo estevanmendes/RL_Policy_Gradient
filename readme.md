@@ -6,15 +6,14 @@ There is a class in which the algorithm is parallelized into as many cpus as one
 
 We used a reward discount policy using a bit of linear algebra. THe factor depends on the problem and its score dependency on the previous actions. 
 
-Workflow:
-    Let the agent explore the environment with the neural network
-    every N episodes:
-        Apply the reward discount policy in each episode
-        Normalize the rewards of the episodes accounting for all of them in the normalization
-        Create a weighted average of the gradient using the normalized rewards
-        apply the gradient in the NN using the chosen optimizer
-        
-    Repeat util the number of episodes aimed is reached. 
+Workflow:\
+    Let the agent explore the environment with the neural network\
+    every N episodes:\
+        Apply the reward discount policy in each episode\
+        Normalize the rewards of the episodes accounting for all of them in the normalization\
+        Create a weighted average of the gradient using the normalized rewards\
+        apply the gradient in the NN using the chosen optimizer\       
+    Repeat util the number of episodes aimed is reached.\ 
 
     
 
